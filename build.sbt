@@ -11,12 +11,12 @@ version := "0.1.0-SNAPSHOT"
 licenses := Seq("Apache-2.0" -> url("http://opensource.org/licenses/Apache-2.0"))
 
 // scala version to be used
-scalaVersion := "2.11.6"
+scalaVersion := "2.11.8"
 // force scalaVersion
 //ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }
 
 // spark version to be used
-val sparkVersion = "1.3.0"
+val sparkVersion = "2.1.0"
 
 // Needed as SBT's classloader doesn't work well with Spark
 fork := true
@@ -25,7 +25,7 @@ fork := true
 fork in console := true
 
 // Java version
-javacOptions ++= Seq("-source", "1.7", "-target", "1.7")
+javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 
 // add a JVM option to use when forking a JVM for 'run'
 javaOptions ++= Seq("-Xmx2G")
@@ -62,9 +62,9 @@ val sparkDependencyScope = "provided"
 // spark modules (should be included by spark-sql, just an example)
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % sparkDependencyScope,
-  "org.apache.spark" %% "spark-sql" % sparkVersion % sparkDependencyScope,
-  "org.apache.spark" %% "spark-mllib" % sparkVersion % sparkDependencyScope,
-  "org.apache.spark" %% "spark-streaming" % sparkVersion % sparkDependencyScope
+  "org.apache.spark" %% "spark-sql" % sparkVersion % sparkDependencyScope
+//  "org.apache.spark" %% "spark-mllib" % sparkVersion % sparkDependencyScope,
+//  "org.apache.spark" %% "spark-streaming" % sparkVersion % sparkDependencyScope
 )
 
 // logging
