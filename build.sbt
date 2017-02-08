@@ -33,7 +33,10 @@ javaOptions ++= Seq("-Xmx2G")
 // append -deprecation to the options passed to the Scala compiler
 scalacOptions ++= Seq("-deprecation", "-unchecked")
 
-// Use local repositories if they are needed
+// Use local repositories if they are needed.
+// Please be careful about URIs if you use Windows.
+// In case of Windows users, you should use "file:///" (Triple slash) URL expressions
+//
 // resolvers ++= Seq(
 //   Resolver.defaultLocal,
 //   Resolver.mavenLocal,
