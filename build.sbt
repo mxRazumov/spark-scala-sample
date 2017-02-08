@@ -33,17 +33,17 @@ javaOptions ++= Seq("-Xmx2G")
 // append -deprecation to the options passed to the Scala compiler
 scalacOptions ++= Seq("-deprecation", "-unchecked")
 
-// Use local repositories by default
-resolvers ++= Seq(
-  Resolver.defaultLocal,
-  Resolver.mavenLocal,
-  // make sure default maven local repository is added... Resolver.mavenLocal has bugs.
-  "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository",
-  // For Typesafe goodies, if not available through maven
-  // "Typesafe" at "http://repo.typesafe.com/typesafe/releases",
-  // For Spark development versions, if you don't want to build spark yourself
-  "Apache Staging" at "https://repository.apache.org/content/repositories/staging/"
-  )
+// Use local repositories if they are needed
+// resolvers ++= Seq(
+//   Resolver.defaultLocal,
+//   Resolver.mavenLocal,
+//   // make sure default maven local repository is added... Resolver.mavenLocal has bugs.
+//   "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository",
+//   // For Typesafe goodies, if not available through maven
+//   // "Typesafe" at "http://repo.typesafe.com/typesafe/releases",
+//   // For Spark development versions, if you don't want to build spark yourself
+//   "Apache Staging" at "https://repository.apache.org/content/repositories/staging/"
+//   )
 
 
 /// Dependencies
