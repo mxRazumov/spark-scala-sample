@@ -11,8 +11,8 @@ I updated several libraries.
 
 ## Libraries included
 
-- Spark 1.3.0
-- Scala 2.11.6
+- Spark 2.1.0
+- Scala 2.11.8
 - ScalaTest 2.2.4
 - ScalaCheck 1.12.2
 
