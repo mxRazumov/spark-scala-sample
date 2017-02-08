@@ -1,6 +1,6 @@
 # Sample Spark project
 
-This project is derived from huangjs/spark-sample-project.
+This project is derived from [huangjs/spark-sample-project](https://github.com/huangjs/spark-sample-project).
 I updated several libraries.
 
 ## Highlights
