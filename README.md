@@ -1,5 +1,8 @@
 # Sample Spark project
 
+This project is derived from huangjs/spark-sample-project.
+I updated several libraries.
+
 ## Highlights
 
 - Sane compiler flags to scala
