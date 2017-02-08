@@ -78,7 +78,7 @@ libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.12.2" % "test"
 
 /// Compiler plugins
 
-addCompilerPlugin("com.foursquare.lint" %% "linter" % "0.1.12")
+addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.12")
 
 
 /// console
