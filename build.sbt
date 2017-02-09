@@ -98,20 +98,12 @@ val sparkMode = sys.env.getOrElse("SPARK_MODE", "local[2]")
 
 initialCommands in console :=
   s"""
-    |import org.apache.spark.SparkConf
-    |import org.apache.spark.SparkContext
-    |import org.apache.spark.SparkContext._
+    |import org.apache.spark.sql.SparkSession
     |
-    |@transient val sc = new SparkContext(
-    |  new SparkConf()
-    |    .setMaster("$sparkMode")
-    |    .setAppName("Console test"))
-    |implicit def sparkContext = sc
-    |import sc._
-    |
-    |@transient val sqlc = new org.apache.spark.sql.SQLContext(sc)
-    |implicit def sqlContext = sqlc
-    |import sqlc._
+    |@transient val spark = SparkSession.builder().master("$sparkMode").appName("Console test").getOrCreate()
+    |implicit def sc = spark.sparkContext
+    |implicit def sqlContext = spark.sqlContext
+    |import spark.implicits._
     |
     |def time[T](f: => T): T = {
     |  import System.{currentTimeMillis => now}
@@ -123,7 +115,7 @@ initialCommands in console :=
 
 cleanupCommands in console :=
   s"""
-     |sc.stop()
+     |spark.stop()
    """.stripMargin
 
 
