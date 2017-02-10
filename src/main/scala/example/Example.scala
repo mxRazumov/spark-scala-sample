@@ -23,24 +23,29 @@ import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.apache.spark.sql.functions._
 
 /**
-  * An exmaple of Spark applications
+  * An exmaple of Spark application
   */
 object Example {
 
-  class NumbersGenerator(n: Int) {
-    def generate(): Array[Int] = {
-      0 to n - 1 toArray
-    }
-  }
-
-  case class Number(n: Int)
-
+  /**
+    * Create a sample of DataFrame, which is used for the test of calculation.
+    *
+    * @param n The number of records
+    * @param spark SparkSession to be used in this method.
+    * @return DataFrame
+    */
   def createDataFrame(n: Int)(implicit spark: SparkSession): DataFrame = {
-    val num = new NumbersGenerator(n).generate()
-    val rdd = spark.sparkContext.parallelize(num).map(Number)
-    spark.createDataFrame[Number](rdd)
+    val num = SampleIntegerGenerator().generate(n)
+    val rdd = spark.sparkContext.parallelize(num).map(SampleInteger)
+    spark.createDataFrame[SampleInteger](rdd)
   }
 
+  /**
+    * A sample method to execute calculation using DataFrame.
+    *
+    * @param df DataFrame which consists of records of integers.
+    * @return DataFrame of result of calculation
+    */
   def calcNumbers(df: DataFrame): DataFrame = {
     import df.sparkSession.implicits._
     val window = Window.partitionBy().orderBy(desc("n"))

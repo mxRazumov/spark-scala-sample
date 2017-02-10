@@ -4,7 +4,8 @@ import org.apache.log4j.Logger
 import org.apache.spark.sql.SparkSession
 import org.scalatest.{BeforeAndAfterEach, FunSuite, Outcome}
 
-trait TestSparkSession extends FunSuite
+trait TestSparkSession
+  extends FunSuite
   with BeforeAndAfterEach {
 
   val log = Logger.getLogger(this.getClass)
