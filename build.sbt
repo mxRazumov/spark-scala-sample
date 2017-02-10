@@ -34,8 +34,9 @@ javaOptions ++= Seq("-Xmx2G")
 scalacOptions ++= Seq("-deprecation", "-unchecked")
 
 // Use local repositories if they are needed.
-// Please be careful about URIs if you use Windows.
+// Please be careful for URIs if you are a Windows user.
 // In case of Windows users, you should use "file:///" (Triple slash) URL expressions
+// instead of "file://" (Double slash)
 //
 // resolvers ++= Seq(
 //   Resolver.defaultLocal,
@@ -65,9 +66,7 @@ val sparkDependencyScope = "provided"
 // spark modules (should be included by spark-sql, just an example)
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % sparkDependencyScope,
-  "org.apache.spark" %% "spark-core" % sparkVersion % "compile, test" classifier "tests",
-  "org.apache.spark" %% "spark-sql" % sparkVersion % sparkDependencyScope,
-  "org.apache.spark" %% "spark-sql" % sparkVersion % "compile, test" classifier "tests"
+  "org.apache.spark" %% "spark-sql" % sparkVersion % sparkDependencyScope
 //  "org.apache.spark" %% "spark-mllib" % sparkVersion % sparkDependencyScope,
 //  "org.apache.spark" %% "spark-streaming" % sparkVersion % sparkDependencyScope
 )
@@ -92,9 +91,8 @@ addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.12")
 // but still keep the console settings in the sbt-spark-package plugin
 
 // If you want to use yarn-client for spark cluster mode, override the environment variable
-// SPARK_MODE=yarn-client <cmd>
+// SPARK_MODE=yarn <cmd>
 val sparkMode = sys.env.getOrElse("SPARK_MODE", "local[2]")
-
 
 initialCommands in console :=
   s"""
