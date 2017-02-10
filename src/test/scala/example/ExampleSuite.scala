@@ -18,33 +18,36 @@
 
 package example
 
-class ExampleSuite extends TestData {
+class ExampleSuite extends TestSparkSession {
 
   import example.Example._
-
-  override implicit def spark = _spark
 
   test("Numbers generate an array of Int") {
     val n = 3
     val generator = SampleIntegerGenerator()
     val arr = generator.generate(n)
-    val answer = integersArray // (0, 1, 2)
+    val answer = Array(0, 1, 2)
 
     assert(arr === answer)
   }
 
   test("Create DataFrame") {
+    implicit def spark = _spark
+
     val n = 3
     val df = createDataFrame(n)
-    val answer = integersArray // (0, 1, 2)
+    val answer = Array(0, 1, 2)
 
     assert(df.collect().map(r => r.getAs[Int]("n")) === answer)
   }
 
   test("Calculate") {
-    val df =  integersDF // (0, 1, 2)
+    implicit def spark = _spark
+
+    val rdd = spark.sparkContext.parallelize(0 to 2).map(SampleInteger)
+    val df = spark.createDataFrame(rdd)
     val sum = calcNumbers(df)
-    val answer = integersArray // (0, 1, 2)
+    val answer = Array(0, 1, 2)
 
     assert(sum.collect().map(r => r.getAs[Int]("diff")) === answer)
   }
