@@ -47,5 +47,8 @@ Currently Test and run will fork a JVM. The reason it's necessary is that SBT's 
 However `sbt console` does not recognize fork key right now. It might throw ScalaReflectionException, etc.
 
 ## Author
+- dobashim (dobashim@oss.nttdata.co.jp)
+
+## Original author
 
 - Jianshi Huang (jianshuang@paypal.com; jianshi.huang@gmail.com)
