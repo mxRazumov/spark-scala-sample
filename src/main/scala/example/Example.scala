@@ -55,8 +55,7 @@ object Example {
 
   def main(args: Array[String]): Unit = {
     val appName = "Example"
-    val master = "local[2]"
-    implicit val spark = SparkSession.builder().appName(appName).master(master).getOrCreate()
+    implicit val spark = SparkSession.builder().appName(appName).getOrCreate()
     val n = 10
     val inputDf = createDataFrame(n)
     val sumDf = calcNumbers(inputDf)
