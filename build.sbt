@@ -15,8 +15,11 @@ scalaVersion := "2.11.8"
 // force scalaVersion
 //ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }
 
+//scapegoat version
+scapegoatVersion in ThisBuild := "1.3.3"
+
 // spark version to be used
-val sparkVersion = "2.1.0"
+val sparkVersion = "2.3.1"
 
 // Needed as SBT's classloader doesn't work well with Spark
 fork := true
@@ -72,17 +75,17 @@ libraryDependencies ++= Seq(
 )
 
 // logging
-libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.1.0"
+libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0"
 
 // testing
-libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.4" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % "test"
 
-libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.12.2" % "test"
+libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.14.0" % "test"
 
 
 /// Compiler plugins
 
-addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.12")
+addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.17")
 
 
 /// console

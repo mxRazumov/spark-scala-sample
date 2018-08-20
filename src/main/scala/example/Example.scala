@@ -19,7 +19,7 @@
 package example
 
 import org.apache.spark.sql.expressions.Window
-import org.apache.spark.sql.{DataFrame, SparkSession}
+import org.apache.spark.sql.{DataFrame, SparkSession, Dataset}
 import org.apache.spark.sql.functions._
 
 /**
@@ -55,7 +55,7 @@ object Example {
 
   def main(args: Array[String]): Unit = {
     val appName = "Example"
-    implicit val spark = SparkSession.builder().appName(appName).getOrCreate()
+    implicit val spark = SparkSession.builder().master("local").appName(appName).getOrCreate()
     val n = 10
     val inputDf = createDataFrame(n)
     val sumDf = calcNumbers(inputDf)
