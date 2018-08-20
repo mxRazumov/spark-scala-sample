@@ -123,9 +123,9 @@ cleanupCommands in console :=
 /// scaladoc
 scalacOptions in (Compile,doc) ++= Seq("-groups", "-implicits",
   // NOTE: remember to change the JVM path that works on your system.
-  // Current setting should work for JDK7 on OSX and Linux (Ubuntu)
-  "-doc-external-doc:/Library/Java/JavaVirtualMachines/jdk1.7.0_60.jdk/Contents/Home/jre/lib/rt.jar#http://docs.oracle.com/javase/7/docs/api",
-  "-doc-external-doc:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar#http://docs.oracle.com/javase/7/docs/api"
+  // Current setting should work for JDK8 on OSX and Linux (Ubuntu)
+  "-doc-external-doc:/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib#http://docs.oracle.com/javase/8/docs/api",
+  "-doc-external-doc:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar#http://docs.oracle.com/javase/8/docs/api"
   )
 
 autoAPIMappings := true
